@@ -24,7 +24,10 @@ Notes are sorted in reverse chronologically order.
 
                  min((n-1, UPC/5) Sum of that (1/2)
 
-12) Why do care about minimizing the variance? Because in the future we like to analyse the different p2p protocols and compare the overall system performance of all nodes versus the individual performance of a single node. For example, all nodes make selfish decisions to maximize their download rates. How does the system behave when all users are selfish?
+12) Why do care about minimizing the variance? Because in the future we like to analyse
+the different p2p protocols and compare the overall system performance of all nodes versus 
+the individual performance of a single node. For example, all nodes make selfish decisions 
+to maximize their download rates. How does the system behave when all users are selfish?
 
 Attendance: Tommy, Dan, Honggang
 
