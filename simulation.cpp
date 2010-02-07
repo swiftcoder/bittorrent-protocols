@@ -63,6 +63,7 @@ class Node
 public:
 	double capacity, link_capacity;
 	int N, window_size, steps, last_update, last_wakeup, last_changed;
+	int window_size_index, new_window_size, max_window_size;
 	Action last_action;
 	
 	NodeSet upload_peers, download_peers;
@@ -70,7 +71,25 @@ public:
 	double total;
 	double avg, last_avg;
 	
-	Node(double capacity, int initN, int sim_window_size) : capacity(capacity), link_capacity(capacity), N(initN), window_size(sim_window_size), steps(0), last_update(0), last_wakeup(0), last_changed(0), last_action(Decrease), total(0.0), avg(0.0), last_avg(0.0) {}
+	Node(double capacity, int initN, int sim_window_size) {
+    capacity = capacity;
+    link_capacity = capacity;
+    N = initN;
+    window_size = sim_window_size;
+    /* Added to support dynamic window size 02/07/10 */
+    window_size_index = 0;
+    new_window_size = sim_window_size;
+    max_window_size = sim_window_size;
+    /* End */
+    steps = 0;
+    last_update = 0;
+    last_wakeup = 0;
+    last_changed = 0;
+    last_action = Decrease;
+    total = 0.0;
+    avg = 0.0;
+    last_avg = 0.0;
+ }
 };
 
 struct LinkGreater {
@@ -140,7 +159,8 @@ public:
 	void update(int step) {
 		Node &node = nodes[rand() % nodes.size()];
 		
-		wakeup(node, step);
+		/* wakeup(node, step); */
+    dynamic_wakeup(node, step);
 	}
 	
 	void wakeup(Node &node, int step) {
@@ -167,6 +187,41 @@ public:
 		
 		update_connections(node, step);
 	}
+	
+	void relative_wakeup(Node &node, int step) {
+
+  }
+ 
+  void dynamic_wakeup(Node &node, int step) {
+    NodeSet trading_peers;
+    make_intersection(node.download_peers, node.upload_peers, trading_peers);
+    
+    update_total(node, step);
+    
+    int elapsed = step - node.last_wakeup;
+		double avg = node.total / elapsed;
+		node.total = 0;
+		
+    if (node.steps == 0) {
+      node.avg = avg;
+    } else {
+      node.avg = alpha * node.avg + (1.0 - alpha) * avg;
+    }
+    
+    node.last_wakeup = step;
+    
+    if (++node.window_size_index == node.new_window_size) {
+      update_N(node, step);
+      node.window_size_index = 0;
+      int new_size = node.max_window_size + 5 - node.upload_peers.size();
+      if (new_size > node.max_window_size) {
+        new_size = node.max_window_size;
+      }
+      node.new_window_size = new_size;
+    }
+    
+    update_connections(node, step);
+  }
 	
 	void update_connections(Node &node, int step) {
 		upload.clear();
