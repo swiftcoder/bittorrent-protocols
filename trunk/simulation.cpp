@@ -159,8 +159,7 @@ public:
 	void update(int step) {
 		Node &node = nodes[rand() % nodes.size()];
 		
-		/* wakeup(node, step); */
-    dynamic_wakeup(node, step);
+		dynamic_wakeup(node, step);
 	}
 	
 	void wakeup(Node &node, int step) {
@@ -189,39 +188,47 @@ public:
 	}
 	
 	void relative_wakeup(Node &node, int step) {
-
-  }
- 
-  void dynamic_wakeup(Node &node, int step) {
-    NodeSet trading_peers;
-    make_intersection(node.download_peers, node.upload_peers, trading_peers);
-    
-    update_total(node, step);
-    
-    int elapsed = step - node.last_wakeup;
-		double avg = node.total / elapsed;
-		node.total = 0;
 		
-    if (node.steps == 0) {
-      node.avg = avg;
-    } else {
-      node.avg = alpha * node.avg + (1.0 - alpha) * avg;
-    }
-    
-    node.last_wakeup = step;
-    
-    if (++node.window_size_index == node.new_window_size) {
-      update_N(node, step);
-      node.window_size_index = 0;
-      int new_size = node.max_window_size + 5 - node.upload_peers.size();
-      if (new_size > node.max_window_size) {
-        new_size = node.max_window_size;
-      }
-      node.new_window_size = new_size;
-    }
-    
-    update_connections(node, step);
-  }
+		node.window_size = std::max<int>( (int) sqrt(node.capacity), node.window_size);
+		/* Mustfa have tried to ...
+			1) Multiply the sqrt(node.capacity) * KEY
+			2) window_size += scaler
+			3) window_size *= scaler
+			According to Tristam, didn't work out to well. 
+		*/
+		wakeup(node, step);
+	}
+ 
+	void dynamic_wakeup(Node &node, int step) {
+		NodeSet trading_peers;
+		make_intersection(node.download_peers, node.upload_peers, trading_peers);
+		
+		update_total(node, step);
+		
+		int elapsed = step - node.last_wakeup;
+			double avg = node.total / elapsed;
+			node.total = 0;
+			
+		if (node.steps == 0) {
+		  node.avg = avg;
+		} else {
+		  node.avg = alpha * node.avg + (1.0 - alpha) * avg;
+		}
+		
+		node.last_wakeup = step;
+		
+		if (++node.window_size_index == node.new_window_size) {
+		  update_N(node, step);
+		  node.window_size_index = 0;
+		  int new_size = node.max_window_size + 5 - node.upload_peers.size();
+		  if (new_size > node.max_window_size) {
+			new_size = node.max_window_size;
+		  }
+		  node.new_window_size = new_size;
+		}
+		
+		update_connections(node, step);
+	}
 	
 	void update_connections(Node &node, int step) {
 		upload.clear();
