@@ -1,8 +1,8 @@
 Notes are sorted in reverse chronologically order. 
 
-{{{
+== 02/03/10 ==
 
-02/03/10
+{{{
 
 1) Take ownership of new code and all code.
 
