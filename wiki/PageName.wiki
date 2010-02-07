@@ -1,0 +1,31 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+Add your content here.
+
+= Terminology = 
+
+window size - 
+process - 
+wakeup - 
+running average - 
+relative window size
+upload capacity - 
+
+= P2P Protocols = 
+
+1) Original Bittorrent Protocol - fix the number of upload connections to 5 and disable the decision process. 
+
+2)Improved Bittorrent Protocol - square root of upload capacity and disable decision process.
+  
+3) 
+4) 
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
