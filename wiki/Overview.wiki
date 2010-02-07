@@ -1,0 +1,30 @@
+
+= Introduction =
+
+
+= Terminology = 
+
+window size - the number of times a node needs to wakeup inorder to make a decision about
+changing the number of connections. 
+ 
+process - increase or decrease the number of connections to increase greater download bandwidth.
+
+wakeup - modify the set of upload peers to attract better download peers. 
+
+moving average - 
+
+relative window size - each node gets assigned to an individual window size base on the square root of its upload capacity.
+
+dynamic window size - the window size is adjusted base on the number of uploads. (N + 5 - upload connections) Where N is the number of nodes.
+
+upload capacity - the upload speed of a node from an empirical tail-heavy distribution.
+
+= P2P Protocols = 
+
+1)Original Bittorrent Protocol - fix the number of upload connections to 5 and disable the decision process. 
+
+2)Improved Bittorrent Protocol - square root of upload capacity and disable decision process.
+  
+3)Random Number of Initial Connections  
+
+4)Fully connected number of connections
