@@ -1,0 +1,25 @@
+This section of the Wiki contains note that are taken during the weekly meetings.
+
+
+= Introduction =
+
+
+
+= Details =
+
+02/03/10
+
+1) Take ownership of new code and all code.
+2) Re-reproduce all previous results Tristam and Mustafa Starting with the 2009 report.
+3) Take notes in the meeting,.
+7) New formula for number of connections.
+8) Google Repository for CODE & Notes
+9) New formula for upperbound.
+10) Read the report.
+11) We redefine the "losely" formula for the upperbound. 
+     Constrains 1) Min link is 5kb
+	        2) Cannot exceed n^2(n-1)
+
+                 min((n-1, UPC/5) Sum of that (1/2)
+
+Attendance: Tommy, Dan, Honggang
