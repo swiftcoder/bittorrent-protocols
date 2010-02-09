@@ -335,55 +335,74 @@ class Output
 public:
 	Output(Simulation &simulation) : sim(simulation), variance("variance.txt"), download_rates("download_rates.txt") {}
 	
+	void dump_variance() {
+	}
+	
+	void dump_download_speeds() {
+	}
+	
+	void dump_adjacency() {
+	}
+	
 	void output(int step) {
+		bool disabled_adjacency = true;
+		bool disabled_variance = false;
+		bool disabled_download_rates = true;
+		
 		int download_connections = 0;
 		std::vector<double> downloads;
 		
 		std::ostringstream str;
-		//str << "adjacency" << step << ".txt";
-		//std::ofstream adjacency(str.str().c_str());
-		
-		
-		download_rates << step;
+					
+		if (disabled_download_rates == false) {			
+			download_rates << step;
+		}
 		
 		for (int i = 0; i < sim.nodes.size(); i++) {
 			Node &node = sim.nodes[i];
 			
 			download_connections += node.download_peers.size();
 			double D = download_rate(node.download_peers);
-			downloads.push_back( D );
+			downloads.push_back(D);
 			
 			NodeSet peers;
 			make_union(node.upload_peers, node.download_peers, peers);
 			NodeSet trading;
 			make_intersection(node.upload_peers, node.download_peers, trading);
-			
-			/*
-			for (NodeSet::iterator it = peers.begin(); it != peers.end(); ++it) {
-				Node *peer = *it;
-				
-				adjacency << node.capacity << '\t';
-				if (node.upload_peers.find(peer) != node.upload_peers.end())
-					adjacency << peer->capacity;
-				adjacency << '\t';
-				if (node.download_peers.find(peer) != node.download_peers.end())
-					adjacency << peer->capacity;
-				adjacency << '\t';
-				if (trading.find(peer) != trading.end())
-					adjacency << peer->capacity;
-				adjacency << '\n';
+		
+			if (disabled_adjacency == false) {
+				str << "adjacency" << step << ".txt";
+				std::ofstream adjacency(str.str().c_str());
+				for (NodeSet::iterator it = peers.begin(); it != peers.end(); ++it) {
+					Node *peer = *it;
+					adjacency << node.capacity << '\t';
+					if (node.upload_peers.find(peer) != node.upload_peers.end())
+						adjacency << peer->capacity;
+					adjacency << '\t';
+					if (node.download_peers.find(peer) != node.download_peers.end())
+						adjacency << peer->capacity;
+					adjacency << '\t';
+					if (trading.find(peer) != trading.end())
+						adjacency << peer->capacity;
+					adjacency << '\n';
+				}
 			}
-			*/
 			
-			download_rates << '\t' << D;
+			if (disabled_download_rates == false) {
+				download_rates << '\t' << D;
+			}
 		}
 		
-		download_rates << std::endl;
+		if (disabled_download_rates == false) {
+			download_rates << std::endl;
+		}
 		
 		double download_average = Average<double>(downloads.begin(), downloads.end());
 		double download_variance = Variance<double>(downloads.begin(), downloads.end(), download_average);
 		
-		variance << step << '\t' << download_connections << '\t' << download_variance << std::endl;
+		if (disabled_variance == false) {
+			variance << step << '\t' << download_connections << '\t' << download_variance << std::endl;
+		}
 	}
 };
 
