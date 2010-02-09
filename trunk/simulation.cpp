@@ -205,6 +205,11 @@ public:
 		update_connections(node, step);
 	}
 	
+	void relative_wakeup(Node &node, int step) {
+		node.window_size = std::max<int>((int) sqrt(node.capacity), node.window_size);
+		wakeup(node, step);
+	}
+	
 	void update_connections(Node &node, int step) {
 		upload.clear();
 		drop.clear();
