@@ -1,0 +1,104 @@
+# !/bin/bash
+
+time=6000000		# Simulation Time
+current=`pwd` 		# Path to the current directory
+
+# Go to the simulation directory
+cd .. 
+cd ..
+cd ..
+
+## Tailheavy-Empirical Distribution 
+distribution=tailheavy_emprical
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 sqrt 0.07 100 $time
+cat variance.txt > variance_sqrt.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 fixed 0.07 100 $time
+cat variance.txt > variance_fixed.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 random 0.07 100 $time
+cat variance.txt > variance_random.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 full 0.07 100 $time
+cat variance.txt > variance_full.txt
+gnuplot scripts/Simulations/dynamic/plot.gnu
+cat variance.gif > variance_$distribution.gif
+cat conns.gif > conns_$distribution.gif
+cp variance_$distribution.gif $current
+cp conns_$distribution.gif $current
+rm variance*
+rm conns*
+rm download_rates*
+
+## Exponential-Generated Distribution 
+distribution=generated_exponential
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 sqrt 0.07 100 $time
+cat variance.txt > variance_sqrt.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 fixed 0.07 100 $time
+cat variance.txt > variance_fixed.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 random 0.07 100 $time
+cat variance.txt > variance_random.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 full 0.07 100 $time
+cat variance.txt > variance_full.txt
+gnuplot scripts/Simulations/dynamic/plot.gnu
+cat variance.gif > variance_$distribution.gif
+cat conns.gif > conns_$distribution.gif
+cp variance_$distribution.gif $current
+cp conns_$distribution.gif $current
+rm variance*
+rm conns*
+rm download_rates*
+
+## Lognormal Generated Distribution 
+distribution=log_normal_generated
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 sqrt 0.07 100 $time
+cat variance.txt > variance_sqrt.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 fixed 0.07 100 $time
+cat variance.txt > variance_fixed.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 random 0.07 100 $time
+cat variance.txt > variance_random.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 full 0.07 100 $time
+cat variance.txt > variance_full.txt
+gnuplot scripts/Simulations/dynamic/plot.gnu
+cat variance.gif > variance_$distribution.gif
+cat conns.gif > conns_$distribution.gif
+cp variance_$distribution.gif $current
+cp conns_$distribution.gif $current
+rm variance*
+rm conns*
+rm download_rates*
+
+## Pareto Generated Distribution 
+distribution=pareto_generated
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 sqrt 0.07 100 $time
+cat variance.txt > variance_sqrt.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 fixed 0.07 100 $time
+cat variance.txt > variance_fixed.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 random 0.07 100 $time
+cat variance.txt > variance_random.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 full 0.07 100 $time
+cat variance.txt > variance_full.txt
+gnuplot scripts/Simulations/dynamic/plot.gnu
+cat variance.gif > variance_$distribution.gif
+cat conns.gif > conns_$distribution.gif
+cp variance_$distribution.gif $current
+cp conns_$distribution.gif $current
+rm variance*
+rm conns*
+rm download_rates*
+
+## Weibull Generated Distribution 
+distribution=weibull_generated
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 sqrt 0.07 100 $time
+cat variance.txt > variance_sqrt.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 fixed 0.07 100 $time
+cat variance.txt > variance_fixed.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 random 0.07 100 $time
+cat variance.txt > variance_random.txt
+./simulation upload_speeds/$distribution.txt 100 3 2 1234 full 0.07 100 $time
+cat variance.txt > variance_full.txt
+gnuplot scripts/Simulations/dynamic/plot.gnu
+cat variance.gif > variance_$distribution.gif
+cat conns.gif > conns_$distribution.gif
+cp variance_$distribution.gif $current
+cp conns_$distribution.gif $current
+rm variance*
+rm conns*
+rm download_rates*
