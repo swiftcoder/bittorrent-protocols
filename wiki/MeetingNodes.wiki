@@ -20,7 +20,7 @@ Notes are sorted in reverse chronologically order.
 
 11) We redefine the "losely" formula for the upperbound. 
      Constrains 1) Min link is 5kb
-	        2) Cannot exceed n^2(n-1)
+	        2) Cannot exceed n(n-1)/2
 
                  min((n-1, UPC/5) Sum of that (1/2)
 
