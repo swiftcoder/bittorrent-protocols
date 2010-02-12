@@ -1,4 +1,28 @@
-Notes are sorted in reverse chronologically order. 
+Notes are sorted in reverse chronologically order. i.e Most recent first. 
+
+== 02/11/08 ==
+1) Discussed on data dumping. Having mechanism to select what information to dump in the simulation. 
+
+2) Went over the new "merged" code and redid previous simulations. Sanity check for the "merged" code. 
+
+3) Duplex connection. A <-> B counts as two connections in the simulation.
+
+4) Practical applications like video streaming where high upload-capacity nodes don't
+really care about "donating" their bandwidth if they can stream at a typical rate. Fairness isn't the concern for high upload-capacity nodes if they can stream the video at a decent rate. Therefore minimizing the variance is a crucial part of the protocol. 
+
+5) Ratio of  (# of connections / # of connections in a fully connected simulation)
+
+6) CDF of generated distributions in log-scale.
+
+7) Komogrove-Smirnove Test to see if generated distributions are correct.
+
+8) Search for empirical data on the typical download rate of a bittorent streaming application
+
+9) An optimization problem. How to minimizing the variance of the download rate by determining on 1) who to upload and 2) how much to upload. An algorithm that determines 
+a node's upload peers and a decides on how much to upload to each peer. The constraint #1 is that the upload peers can "exit" out of the application. Therefore the fully connected network is dynamic. The constraint #2 is that each node makes selfish decisions to reach the maximum streaming rate potential. 
+
+
+
 
 == 02/03/10 ==
 
