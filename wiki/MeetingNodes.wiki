@@ -7,10 +7,11 @@ Notes are sorted in reverse chronologically order. i.e Most recent first.
 {{{
   1) Tristam presented his slides on download rates, variance, and minimum variance.
   2) Tommy presented his hill climbing local search minimum algorithm.
-  3) Honggang proposed to let the nodes randomly choose N nodes to fill up their upload links. The argument is that the system total upload capacity is equally distributed to all nodes in the simulation. Tristam implemented the simple random algorithm and hill climbing   algorithm.
-  4) Tristam reported that the hill climbing algorithm produces a variance of 2103.
-  5) Tristam reported that the random algorithm produces the smallest observed variance of 1305. 
-  6) All slides are uploaded to the repository. 
+  3) Honggang proposed to let the nodes randomly choose N nodes to fill up their upload links. The argument is that the system total upload capacity is equally distributed to all nodes in the simulation. 
+  4) Tristam implemented the simple random algorithm and hill climbing   algorithm.
+  5) Tristam reported that the hill climbing algorithm produces a variance of 2103.
+  6) Tristam reported that the random algorithm produces the smallest observed variance of 1305. 
+  7) All slides are uploaded to the repository. 
 
 Attendance: Dan, Tristam, Honggang, Tommy
 
