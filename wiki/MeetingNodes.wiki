@@ -12,6 +12,7 @@ Notes are sorted in reverse chronologically order. i.e Most recent first.
   5) Tristam reported that the hill climbing algorithm produces a variance of 2103.
   6) Tristam reported that the random algorithm produces the smallest observed variance of 1305. 
   7) All slides are uploaded to the repository. 
+}}}
 
 Attendance: Dan, Tristam, Honggang, Tommy
 
