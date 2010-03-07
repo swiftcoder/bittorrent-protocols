@@ -221,6 +221,11 @@ public:
 		get_extra_peers(node, upload, node.N, extra);
 		make_union(upload, extra, upload);
 		make_union(add, upload, add);
+		make_union(add, drop, changed);
+		
+		for (NodeSet::iterator it = changed.begin(); it != changed.end(); ++it) {
+			update_total(**it, step);
+		}
 		
 		for (NodeSet::iterator it = drop.begin(); it != drop.end(); ++it) {
 			Node *peer = *it;
