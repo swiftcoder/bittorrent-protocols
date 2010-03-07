@@ -210,7 +210,45 @@ public:
 		wakeup(node, step);
 	}
 	
+	void update_random_connections(Node &node, int step) {
+		upload.clear();
+		drop.clear();
+		add.clear();
+		extra.clear();
+		changed.clear();
+
+		make_union(node.upload_peers, drop, drop);
+		get_extra_peers(node, upload, node.N, extra);
+		make_union(upload, extra, upload);
+		make_union(add, upload, add);
+		
+		for (NodeSet::iterator it = drop.begin(); it != drop.end(); ++it) {
+			Node *peer = *it;
+			peer->download_peers.erase(&node);
+			peer->link_capacity = peer->capacity / std::max<int>(peer->upload_peers.size(), 1);
+		}
+		
+		//		std::cout << "adding..." << std::endl;
+		
+		for (NodeSet::iterator it = add.begin(); it != add.end(); ++it) {
+			Node *peer = *it;
+			peer->download_peers.insert(&node);
+			peer->link_capacity = peer->capacity / std::max<int>(peer->upload_peers.size(), 1);
+		}
+		
+		//		std::cout << "setting upload peers..." << std::endl;
+		
+		node.upload_peers.swap(upload);
+		node.link_capacity = node.capacity / std::max<int>(node.upload_peers.size(), 1);
+		
+	}
+	
+	
 	void update_connections(Node &node, int step) {
+		
+		update_random_connections(node, step);
+		return;
+		
 		upload.clear();
 		drop.clear();
 		add.clear();
