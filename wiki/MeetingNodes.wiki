@@ -1,5 +1,33 @@
 Notes are sorted in reverse chronologically order. i.e Most recent first. 
 
+== 03/11/10 ==
+{{{ 
+1) Tommy presented some techniques on generating models of upload capacities. 
+
+   Continuous Distributions. 
+      1. Lognormal
+      2. Exponential
+      3. Pareto
+      4. Loggama
+      5. Weibull
+ 
+   Discreet Distributions. 
+      1. Bipolar distributions.
+      2. 80% of nodes get X from uniform distributions and 20% get Y from uniform distribution. 
+
+
+   The significance of creating those distributions is to see whether the variance in simulation converge or not. Tristam reported that Mustfa tried to use bipolar distributions in the simulation and got unstable results. Mustfa results indicate that the variance doesn't converge. I will re-investage this problem.
+
+2) One of the main objective is to understand the effects of selfish behavior protocols. 
+
+3) Honggang has a theoretical model that claims the variance of selfish-behavior protocols  will eventually converge. 
+
+4) Tommy presented the absolute non-selfish random protocol. During the wake-up period, a node randomly chooses a new set of upload nodes independent from the past. The variance of this protocol is around the 800 range but it fluctuates as time goes on. 
+
+5) The question of whether can the variance goes to 0 is still unclear. 
+
+}}}
+
 == 02/25/10 ==
  Meeting canceled 
 
