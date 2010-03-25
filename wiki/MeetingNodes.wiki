@@ -10,6 +10,7 @@ Notes are sorted in reverse chronologically order. i.e Most recent first.
    5. Figure out why there doesn't exist convergence for two classes distribution. 
    6. Figure out why there doesn't exist convergence for a fully connected network. 
    7. Finish running the degrees of selfishness simulation. 
+   8. Tristam will send Honggang the pareto distribution script. 
 
 Attendance: T.N, H.Z, T.M, D.S
    
