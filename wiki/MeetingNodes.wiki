@@ -1,5 +1,37 @@
 Notes are sorted in reverse chronologically order. i.e Most recent first. 
 
+
+== 03/25/10
+{{{
+   1. Presented the benchmark for 1. Tristam's lognormal, pareto, weibul. 2. Tommy's two classes distribution. {80% from uniform distribution, 20% from uniform distribution }
+   2. The "pareto" distribution isn't a Pareto distribution.
+   3. Presented the idea of "degrees of selfishness"
+   4. Figure out why there doesn't exist convergence for one class distribution. 
+   5. Figure out why there doesn't exist convergence for two classes distribution. 
+   6. Figure out why there doesn't exist convergence for a fully connected network. 
+   7. Finish running the degrees of selfishness simulation. 
+
+Attendance: T.N, H.Z, T.M, D.S
+   
+
+}}}
+
+== 03/18/10 == 
+{{{
+    Skype Meeting.
+    
+    1. CDFs/PDFs of the empirical data and from Tristam's theoretical data.
+    2. Save simulation settings/seed/parameters from simulations. 
+    3. Get the two classes distribution from Tristam. 
+    4. Reproduce simulations and results for two class distribution. 
+    5. Figure out why convergence of the variance doesn't exist for the 2 classes distribution.  
+    6. Two classes: average of the top 3 peers and the average of the remainding peers. 
+    7. Time to takes to run 1000 nodes simulations.
+    8. The number of Connections and the variance over time for all distributiosn and benchmark. 
+
+Attendance: T.N, D.S, Tristam, H.Z
+}}}
+
 == 03/11/10 ==
 {{{ 
 1) Tommy presented some techniques on generating models of upload capacities. 
