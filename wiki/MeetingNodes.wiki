@@ -1,7 +1,7 @@
 Notes are sorted in reverse chronologically order. i.e Most recent first. 
 
 
-== 03/25/10
+== 03/25/10 ==
 {{{
    1. Presented the benchmark for 1. Tristam's lognormal, pareto, weibul. 2. Tommy's two classes distribution. {80% from uniform distribution, 20% from uniform distribution }
    2. The "pareto" distribution isn't a Pareto distribution.
